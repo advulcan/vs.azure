@@ -1,0 +1,11 @@
+require-mschap-v2
+ms-dns 8.8.8.8
+lcp-echo-interval 10
+lcp-echo-failure 3
+noauth
+refuse-pap
+refuse-eap
+refuse-chap
+refuse-mschap
+debug
+logfile /var/log/xl2tpd.log

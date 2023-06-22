@@ -1,0 +1,47 @@
+config setup
+
+conn L2TP-PSK-NAT
+        authby=secret
+        auto=add
+#tunnel doesn't work
+        type=transport
+        keyexchange=ike
+        keyingtries=3
+        ikelifetime=8h
+        keylife=4h
+#ike set for ER3220G, and Android S21
+        ike=aes256-sha1-modp1536,aes256-sha1-modp1024,aes128-sha1-modp1024
+        #esp=aes256gcm16-sha512-modp8192
+#To update  
+      #left=10.1.0.4
+        left=%defaultroute
+        leftprotoport=17/1701
+        right=%any
+        rightprotoport=17/%any
+        dpddelay=10
+        #dpddelay=20
+        dpdaction=clear
+
+conn ikev2-PSK-NAT
+        authby=secret
+        auto=add
+        #doesn't work??
+        #type=tunnel 
+        type=transport
+        keyexchange=ike
+        keyingtries=3
+        ikelifetime=8h
+        keylife=4h
+        #ike set for ER3220G, and Android S21
+        ike=aes256-sha1-modp1536,aes256-sha1-modp1024,aes128-sha1-modp1024
+        #esp=aes256gcm16-sha512-modp8192
+        #To update  
+        #left=10.0.0.4
+        left=%defaultroute
+        leftprotoport=17/1701
+        leftauth=psk
+        right=%any
+        rightprotoport=17/%any
+        rightauth=psk
+        dpddelay=30
+        dpdaction=clear
